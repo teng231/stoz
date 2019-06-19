@@ -6,7 +6,7 @@ class Store extends Event {
 		this._db = {}
 		this._modules = {}
 		this._initState = {}
-		this._updated = {}
+		this._expired = {}
 	}
 	// ------------------- getters---------------------
 	get modules() {
@@ -17,13 +17,16 @@ class Store extends Event {
 		return cloneDeep(this._db)
 	}
 
-	get updated() {
-		return this._updated
+	get expireTime() {
+		return this._expired
 	}
 	// ------------------- private func ------------------
 
-	_setUpdated(key, time) {
-		this._updated[key] = Date.now()
+	_setExpired(key, time) {
+		if(isNaN(time) || time < 0) return
+		this.setTimeout(() => {
+			this._expired[key] = true
+		}, time)
 	}
 
 	// ----------------public func------------------------
@@ -51,8 +54,8 @@ class Store extends Event {
 
 	setState(key, value, option = {}) {
 		if(!this._db.hasOwnProperty(key)) throw Error(`key ${key} is not registered`)
-		// option expired (ms)
-		if(option && option.expired) this._setExpired(key, option.expired)
+		// option time_expired (ms)
+		if(option && option.time_expired) this._setExpired(key, option.time_expired)
 		this._db[key] = value
 		this._publish(key, this._db[key])
 		return this._db[key]
