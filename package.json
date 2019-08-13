@@ -1,14 +1,15 @@
 {
   "name": "stoz",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.1.1",
+  "description": "stoz local storage for any environments",
+  "main": "src/stoz.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest src/*.test.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["vuex", "redux", "persist", "stoz", "store"],
+  "author": "manhte231@gmail.com",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
+    "jest": "^24.8.0"
   }
 }
