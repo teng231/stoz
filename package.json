@@ -1,15 +1,21 @@
 {
   "name": "stoz",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "stoz local storage for any environments",
   "main": "src/stoz.js",
   "scripts": {
     "test": "jest src/*.test.js"
   },
-  "keywords": ["vuex", "redux", "persist", "stoz", "store"],
+  "keywords": [
+    "vuex",
+    "redux",
+    "persist",
+    "stoz",
+    "store"
+  ],
   "author": "manhte231@gmail.com",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^24.8.0"
+    "jest": "^24.9.0"
   }
 }
